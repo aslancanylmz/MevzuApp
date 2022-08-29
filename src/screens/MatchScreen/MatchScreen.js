@@ -806,9 +806,6 @@ const MatchScreen = () => {
         itemWidth={SIZES.screenWidth - 30}
         layout={'tinder'}
         lockScrollWhileSnapping={true}
-        // onSnapToItem={index => {
-        //   carouselRef.current.snapToItem(index);
-        // }}
       />
     </>
   );

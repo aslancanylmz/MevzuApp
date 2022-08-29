@@ -17,6 +17,7 @@ import {COLORS} from '../../constants/theme';
 const iconNames = {
   Eye: 'Eye',
 };
+
 const Icon = ({iconName, style, onPress, width, height, color}) => {
   switch (iconName) {
     case iconNames.Eye:
@@ -32,8 +33,8 @@ const Icon = ({iconName, style, onPress, width, height, color}) => {
               fill={color ?? COLORS.white}
             />
             <Path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M0.664005 10.59C0.517109 10.2083 0.517109 9.78569 0.664005 9.404C1.39123 7.51849 2.67246 5.89744 4.33896 4.75431C6.00547 3.61117 7.97911 2.99956 10 3C14.257 3 17.893 5.66 19.336 9.41C19.483 9.791 19.482 10.214 19.336 10.596C18.6088 12.4815 17.3276 14.1026 15.661 15.2457C13.9945 16.3888 12.0209 17.0004 10 17C5.743 17 2.107 14.34 0.664005 10.59V10.59ZM14 10C14 11.0609 13.5786 12.0783 12.8284 12.8284C12.0783 13.5786 11.0609 14 10 14C8.93914 14 7.92172 13.5786 7.17158 12.8284C6.42143 12.0783 6 11.0609 6 10C6 8.93913 6.42143 7.92172 7.17158 7.17157C7.92172 6.42143 8.93914 6 10 6C11.0609 6 12.0783 6.42143 12.8284 7.17157C13.5786 7.92172 14 8.93913 14 10V10Z"
               fill={color ?? COLORS.white}
             />
