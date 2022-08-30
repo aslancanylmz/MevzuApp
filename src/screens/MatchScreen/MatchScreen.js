@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {View, Text} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import Carousel from 'react-native-snap-carousel';
+import Swiper from 'react-native-deck-swiper';
 import {CustomImage} from '../../components/CustomImage/image';
 import {Icon, iconNames} from '../../components/icon/icon';
 import {URLS} from '../../constants/appConstants';
@@ -771,43 +771,77 @@ const MatchScreen = () => {
   useEffect(() => {
     setVisibleMetaData(mockData.meta_data);
   }, []);
-  const MatchItem = ({item}) => {
+  const MatchItem = (item, index) => {
     return (
-      <View
-        style={{
-          flexDirection: 'column',
-          backgroundColor: COLORS.white,
-          paddingBottom: 10,
-        }}>
+      <>
         <CustomImage
-          image={`${URLS.baseUrl}${item.user_1_photo_link}`}
-          marginSize={30}
+          image={`${URLS.baseUrl}${item?.user_1_photo_link}`}
+          marginSize={40}
           containerStyle={styles.firstImageContainer}
           resizeMode={FastImage.resizeMode.cover}>
+          <Text style={styles.nameText}>{item?.user_1_full_name}</Text>
           <Icon iconName={iconNames.Eye} style={styles.eyeIcon} />
         </CustomImage>
         <CustomImage
-          image={`${URLS.baseUrl}${item.user_2_photo_link}`}
-          marginSize={30}
+          image={`${URLS.baseUrl}${item?.user_2_photo_link}`}
+          marginSize={40}
           containerStyle={styles.secondImageContainer}
           resizeMode={FastImage.resizeMode.cover}>
+          <Text style={styles.nameText}>{item?.user_2_full_name}</Text>
           <Icon iconName={iconNames.Eye} style={styles.eyeIcon} />
         </CustomImage>
-      </View>
+      </>
     );
   };
   return (
-    <>
-      <Carousel
-        ref={carouselRef}
-        renderItem={item => MatchItem(item)}
-        data={visibleMetaData}
-        sliderWidth={SIZES.screenWidth}
-        itemWidth={SIZES.screenWidth - 30}
-        layout={'tinder'}
-        lockScrollWhileSnapping={true}
-      />
-    </>
+    <Swiper
+      containerStyle={{backgroundColor: COLORS.white}}
+      cardStyle={{backgroundColor: COLORS.white}}
+      renderCard={item => MatchItem(item)}
+      cards={visibleMetaData}
+      stackSize={2}
+      onSwipedRight={() => console.log('Swipe Right')}
+      onSwipedLeft={() => console.log('Swipe Left')}
+      animateOverlayLabelsOpacity
+      overlayLabels={{
+        left: {
+          title: 'NOPE',
+          style: {
+            label: {
+              backgroundColor: 'red',
+              borderColor: 'white',
+              color: 'white',
+              borderWidth: 3,
+            },
+            wrapper: {
+              flexDirection: 'column',
+              alignItems: 'flex-end',
+              justifyContent: 'flex-start',
+              marginTop: 10,
+              marginLeft: -10,
+            },
+          },
+        },
+        right: {
+          title: 'LIKE',
+          style: {
+            label: {
+              backgroundColor: 'green',
+              borderColor: 'white',
+              color: 'white',
+              borderWidth: 3,
+            },
+            wrapper: {
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              justifyContent: 'flex-start',
+              marginTop: 30,
+              marginLeft: 30,
+            },
+          },
+        },
+      }}
+    />
   );
 };
 
