@@ -26,6 +26,10 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '500',
   },
+  emptyListDescription: {
+    textAlign: 'center',
+    fontSize: 24,
+  },
 });
 
 export default styles;
