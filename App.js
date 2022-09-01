@@ -4,11 +4,7 @@ import MatchScreen from './src/screens/MatchScreen/MatchScreen';
 import styles from './styles';
 
 const App = () => {
-  return (
-    <SafeAreaView style={styles.appContainer}>
-      <MatchScreen></MatchScreen>
-    </SafeAreaView>
-  );
+  return <MatchScreen></MatchScreen>;
 };
 
 export default App;
