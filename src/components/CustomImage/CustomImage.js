@@ -8,7 +8,7 @@ const CustomImage = props => {
   const {image, marginSize = 0, containerStyle, customWidth} = props;
   const [loading, setLoading] = useState(true);
   const imageWidth = (customWidth ?? SIZES.screenWidth) - marginSize;
-  const ratio = 1.4;
+  const ratio = 1.3;
   const defaultImageStyle = {
     width: imageWidth,
     height: imageWidth / ratio,
